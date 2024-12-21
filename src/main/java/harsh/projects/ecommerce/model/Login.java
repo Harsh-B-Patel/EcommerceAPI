@@ -16,12 +16,10 @@ public class Login {
 
 	// Enforce Non Null and Non Blank 
 	@NotBlank(message = "username is mandatory")
-	@NotNull(message = "username cannot be Null")
 	@JsonProperty("username")
     private String username;
 	
 	@NotBlank(message = "password is mandatory")
-	@NotNull(message = "password cannot be Null")
 	@JsonProperty("password")
     private String password;
 

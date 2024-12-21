@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import ch.qos.logback.classic.Logger;
 import harsh.projects.ecommerce.DAO.DaoUtil;
+import harsh.projects.ecommerce.exception.UserAlreadyExistsException;
+import harsh.projects.ecommerce.exception.UserDoesNotExistsException;
 import harsh.projects.ecommerce.model.Login;
 import harsh.projects.ecommerce.model.LoginResponse;
 import harsh.projects.ecommerce.model.SignUpRequest;
@@ -21,7 +23,7 @@ import jakarta.validation.Valid;
 public class LoginService {
 
 	@PostMapping("/login")
-	public LoginResponse loginMethod(@Valid @RequestBody Login loginInfo) {
+	public LoginResponse loginMethod(@Valid @RequestBody Login loginInfo) throws UserDoesNotExistsException {
 
 		System.out.println(loginInfo.toString());
 
@@ -38,31 +40,23 @@ public class LoginService {
 			Token token = new Token();
 			token.setToken(JwtUtil.generateToken(Constants.SUBJECT, user.getUsername()));
 
-			LoginResponse loginResponse = new LoginResponse(token, user);
-			return loginResponse;
+			return new LoginResponse(token, user);
 
 		} else {
 			// user does not exists return custom error
-			return null;
+			throw new UserDoesNotExistsException("User: " + loginInfo.getUsername() + " does not exists");
+
 		}
 	}
 
 	@PostMapping("/signup")
-	public LoginResponse signUpMethod(@Valid @RequestBody SignUpRequest signUpInfo) {
-
-		System.out.println("LoginService.signUpMethod : " + signUpInfo.toString());
+	public LoginResponse signUpMethod(@Valid @RequestBody SignUpRequest signUpInfo) throws UserAlreadyExistsException {
 
 		// check if username exists
 		System.out.println("LoginService.signUpMethod : Checking if Username Exists");
 		boolean user_exists = DaoUtil.checkLogin(signUpInfo.getCredentials().getUsername());
-		
-		if (user_exists) {
-			System.out.println("LoginService.signUpMethod :  Username Exists");
-			
-			// Add error code return here 
-			return null;
-			
-		} else {
+
+		if (!user_exists) {
 			System.out.println("LoginService.signUpMethod :  Username does not Exists");
 			// go to db and add the user
 			User returnUserInfo = DaoUtil.setUserDetails(signUpInfo.getCredentials(), signUpInfo.getUser());
@@ -74,8 +68,11 @@ public class LoginService {
 
 			return signUpResponse;
 
+		} else {
+			System.out.println("LoginService.signUpMethod :  Username Exists");
+			throw new UserAlreadyExistsException(
+					"User: " + signUpInfo.getCredentials().getUsername() + " already exists");
 		}
-
 
 	}
 

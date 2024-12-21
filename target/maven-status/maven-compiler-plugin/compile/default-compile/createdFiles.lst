@@ -4,6 +4,7 @@ harsh\projects\ecommerce\model\LoginResponse.class
 harsh\projects\ecommerce\model\SignUpRequest.class
 harsh\projects\ecommerce\model\Cart$CartDetails.class
 harsh\projects\ecommerce\model\Product.class
+harsh\projects\ecommerce\DAO\DaoUtil.class
 harsh\projects\ecommerce\service\JwtUtil.class
 harsh\projects\ecommerce\test.class
 harsh\projects\ecommerce\model\Login.class

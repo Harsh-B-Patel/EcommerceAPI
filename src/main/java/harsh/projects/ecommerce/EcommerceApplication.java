@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import harsh.projects.ecommerce.DAO.CreateDatabaseTables;
 
 @SpringBootApplication
 @RestController
@@ -58,15 +57,9 @@ public class EcommerceApplication {
 	public static void main(String[] args) throws IOException, SQLException {
 		SpringApplication.run(EcommerceApplication.class, args);
 		
-		// Create Database if not already
-		db_Create();
-		
 	}
 	
-	public static void db_Create() throws IOException, SQLException {
-		CreateDatabaseTables DB = new CreateDatabaseTables();
 
-	}
 	
 
 }

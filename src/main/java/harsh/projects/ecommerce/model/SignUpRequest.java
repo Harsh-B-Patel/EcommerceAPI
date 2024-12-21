@@ -9,18 +9,14 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-//@JsonInclude(Include.NON_NULL) // Ignore null fields 
-//@JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class SignUpRequest {
 	
-	//@NotBlank(message = "crentials is mandatory")
+	
 	@Valid
-	@NotNull(message = "credentials cannot be Null")
 	@JsonProperty("credentials")
     private Login credentials;
 	
 	@Valid
-	@NotNull(message = "user cannot be Null")
 	@JsonProperty("user")
     private NewUser user;
 

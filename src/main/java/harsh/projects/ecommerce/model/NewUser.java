@@ -11,12 +11,10 @@ import jakarta.validation.constraints.NotNull;
 @JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class NewUser{
 	
-	@NotBlank(message = "user is mandatory")
-	@NotNull(message = "user cannot be Null")
+	@NotBlank(message = "firstName is mandatory")
     private String firstName;
 	
-	@NotBlank(message = "user is mandatory")
-	@NotNull(message = "user cannot be Null")
+	@NotBlank(message = "lastName is mandatory")
     private String lastName;
     
     private String email;
