@@ -1,7 +1,7 @@
 package harsh.projects.ecommerce.model;
 
 public class User {
-    private Long id;
+    private int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -9,11 +9,11 @@ public class User {
     private String phone;
 
     // Getters and Setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

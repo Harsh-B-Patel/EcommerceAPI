@@ -7,6 +7,8 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 
+import harsh.projects.ecommerce.exception.TokenInValidException;
+
 public class JwtUtil {
 
     private static final String ISSUER = "EcommerceBackendAPI";
@@ -28,15 +30,19 @@ public class JwtUtil {
     }
 
     // Validate JWT
-    public static boolean validateToken(String token) {
+    public static boolean validateToken(String token) throws TokenInValidException {
+    	System.out.println("JwtUtil.validateToken: Validate Token");
         try {
             Jwts.parserBuilder()
                 .setSigningKey(SECRET_KEY)
                 .build()
                 .parseClaimsJws(token);
+    		System.out.println("JwtUtil.validateToken: Validate Token Success");
             return true;
         } catch (Exception e) {
-            return false;
+    		System.out.println("JwtUtil.validateToken: Validate Token Failed");
+        	throw new TokenInValidException("The Token sent in RequestHeader is invalid");
+            //return false;
         }
     }
 }
