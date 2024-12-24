@@ -1,19 +1,29 @@
 package harsh.projects.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import jakarta.validation.constraints.NotBlank;
+
+@JsonInclude(Include.NON_NULL) // Ignore null fields 
+@JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class Product {
-    private Double id;
+	
+	
+    private int id;
     private String name;
     private String description;
     private Double price;
-    private Integer stock;
+    private int stock;
     private String categoryName;
 
     // Getters and Setters
-    public Double getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(int id) {
         this.id = id;
     }
 

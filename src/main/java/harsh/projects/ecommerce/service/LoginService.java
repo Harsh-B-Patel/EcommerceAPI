@@ -2,7 +2,7 @@ package harsh.projects.ecommerce.service;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
-import harsh.projects.ecommerce.DAO.DaoUtil;
+import harsh.projects.ecommerce.DAO.UserDaoUtil;
 import harsh.projects.ecommerce.exception.UserDoesNotExistsException;
 import harsh.projects.ecommerce.model.Login;
 import harsh.projects.ecommerce.model.LoginResponse;
@@ -16,13 +16,13 @@ public class LoginService {
 
 		System.out.println("Enter LoginService.loginMethod");
 		// go to db and find the user
-		Boolean user_exists = DaoUtil.checkUserByUsername(loginInfo.getUsername());
+		Boolean user_exists = UserDaoUtil.checkUserByUsername(loginInfo.getUsername());
 		System.out.println("LoginService.loginMethod.user_exist: " + user_exists);
 
 		if (user_exists) {
 
 			// get user info from DB
-			User user = DaoUtil.getUserDetails(loginInfo.getUsername());
+			User user = UserDaoUtil.getUserDetails(loginInfo.getUsername());
 
 			// get new token
 			Token token = new Token();

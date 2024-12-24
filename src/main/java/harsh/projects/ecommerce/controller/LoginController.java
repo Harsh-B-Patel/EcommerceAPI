@@ -5,7 +5,6 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.*;
 
 import ch.qos.logback.classic.Logger;
-import harsh.projects.ecommerce.DAO.DaoUtil;
 import harsh.projects.ecommerce.exception.UserAlreadyExistsException;
 import harsh.projects.ecommerce.exception.UserDoesNotExistsException;
 import harsh.projects.ecommerce.model.Login;

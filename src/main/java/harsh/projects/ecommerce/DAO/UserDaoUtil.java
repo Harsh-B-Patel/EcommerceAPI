@@ -14,7 +14,7 @@ import harsh.projects.ecommerce.model.User;
 import harsh.projects.ecommerce.service.Constants;
 import jakarta.validation.Valid;
 
-public class DaoUtil {
+public class UserDaoUtil {
 
 	// Add ENV Constants
 	static String DB_URL = Constants.DB_URL;
@@ -28,7 +28,7 @@ public class DaoUtil {
 	 */
 	public static boolean checkUserByUsername(String username) {
 		String query = "SELECT 1 FROM user WHERE username='" + username + "';";
-		return DaoUtil.checkUser(query);
+		return UserDaoUtil.checkUser(query);
 	}
 	
 	
@@ -39,7 +39,7 @@ public class DaoUtil {
 	 */
 	public static boolean checkUserByID(int id) {
 		String query = "SELECT 1 FROM user WHERE id='" + id + "';";	
-		return DaoUtil.checkUser(query);
+		return UserDaoUtil.checkUser(query);
 	}
 	
 	
@@ -90,7 +90,7 @@ public class DaoUtil {
 		String query = "SELECT * FROM user WHERE username='" + username + "';";
 		try {
 
-			User user = DaoUtil.getUserDetailsQueryExecution(query);
+			User user = UserDaoUtil.getUserDetailsQueryExecution(query);
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,7 +111,7 @@ public class DaoUtil {
 		String query = "SELECT * FROM user WHERE id='" + id + "';";
 		try {
 
-			User user = DaoUtil.getUserDetailsQueryExecution(query);
+			User user = UserDaoUtil.getUserDetailsQueryExecution(query);
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -202,7 +202,7 @@ public class DaoUtil {
 
 			// Retrieve the newly added user from DB
 			System.out.println("DaoUtil.setUserDetails: Get Newly added User");
-			User updatedUser = DaoUtil.getUserDetailsById(user.getId());
+			User updatedUser = UserDaoUtil.getUserDetailsById(user.getId());
 
 			System.out.println("DaoUtil.setUserDetails: Return User");
 			return updatedUser;
@@ -251,7 +251,7 @@ public class DaoUtil {
 
 			// Retrieve the newly added user from DB
 			System.out.println("DaoUtil.setUserDetails: Get Newly added User");
-			User addedUser = DaoUtil.getUserDetails(credentials.getUsername());
+			User addedUser = UserDaoUtil.getUserDetails(credentials.getUsername());
 
 			System.out.println("DaoUtil.setUserDetails: Return User");
 			return addedUser;
@@ -262,6 +262,42 @@ public class DaoUtil {
 		return null;
 
 	}
+	
+	/**
+	 * Database call to retrive user details based on query
+	 * @param username
+	 * @return
+	 */
+	public static Boolean deleteUser(int id) {
+		
+		try {
+
+			// Connect to DB
+			Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			System.out.println("DaoUtil.deleteUser: Connection to DB established");
+
+			// Prepare the the query
+			PreparedStatement statement = connection.prepareStatement(
+								"DELETE FROM User WHERE id = ?");
+			statement.setInt(1, id);
+			statement.execute();
+			boolean isDeleted = UserDaoUtil.checkUserByID(id);
+			if (!isDeleted) {
+				System.out.println("DaoUtil.deleteUser: Deleted User succesfully");
+				return true;
+			} else {
+				System.out.println("DaoUtil.deleteUser: Deleted User not Succesfull");
+				return false;
+			}
+
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
 	
 	
 	

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import harsh.projects.ecommerce.DAO.DaoUtil;
+import harsh.projects.ecommerce.DAO.UserDaoUtil;
 import harsh.projects.ecommerce.exception.TokenInValidException;
 import harsh.projects.ecommerce.exception.UserDoesNotExistsException;
 import harsh.projects.ecommerce.model.User;
@@ -35,8 +35,8 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/{userId}")
-	public User DeleteUserByUserID(@Valid @PathVariable("userId") int userId, @RequestHeader ("token") String token) throws TokenInValidException, UserDoesNotExistsException {
-		return UserService.GetUserByUserID(userId, token);
+	public String DeleteUserByUserID(@Valid @PathVariable("userId") int userId, @RequestHeader ("token") String token) throws TokenInValidException, UserDoesNotExistsException {
+		return UserService.DeleteUserByUserID(userId, token);
 		
 	}
 }
