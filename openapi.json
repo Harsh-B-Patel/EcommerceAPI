@@ -47,8 +47,8 @@
               }
             }
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthenticated"
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
           }
         },
         "tags": [
@@ -89,8 +89,8 @@
               }
             }
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthenticated"
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
           }
         },
         "tags": [
@@ -183,6 +183,21 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
           "400": {
             "$ref": "#/components/responses/BadRequest"
           }
@@ -284,7 +299,7 @@
         "description": "",
         "operationId": "createProduct",
         "requestBody": {
-          "$ref": "#/components/requestBodies/UpdateCart"
+          "$ref": "#/components/requestBodies/UpdateProduct"
         },
         "parameters": [
           {
@@ -420,8 +435,7 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Cart"
-                },
-                "example": null
+                }
               }
             }
           },
@@ -458,7 +472,7 @@
           "400": {
             "$ref": "#/components/responses/BadRequest"
           },
-          "403": {
+          "401": {
             "$ref": "#/components/responses/Unauthorised"
           }
         },
@@ -531,15 +545,10 @@
       "NewUser": {
         "type": "object",
         "required": [
-          "userName",
           "firstName",
           "lastName"
         ],
         "properties": {
-          "userName": {
-            "type": "string",
-            "example": "theUser"
-          },
           "firstName": {
             "type": "string",
             "example": "John"
@@ -625,29 +634,34 @@
       "Cart": {
         "type": "object",
         "properties": {
-          "userName": {
-            "type": "string",
-            "example": "theUser"
-          },
-          "firstName": {
-            "type": "string",
-            "example": "John"
-          },
-          "lastName": {
-            "type": "string",
-            "example": "James"
-          },
-          "email": {
-            "type": "string",
-            "example": "john@email.com"
-          },
-          "phone": {
-            "type": "string",
-            "example": "12345"
+          "cart": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "username": {
+                "type": "string",
+                "example": "A-Marks9"
+              },
+              "cartItems": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "product": {
+                      "$ref": "#/components/schemas/Product"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "example": 6
+                    }
+                  }
+                }
+              }
+            }
           }
-        },
-        "xml": {
-          "name": "Cart"
         }
       }
     },
@@ -720,21 +734,8 @@
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        404
-                      ]
-                    },
-                    "info": {
-                      "type": "string",
-                      "enum": [
-                        "Not found"
-                      ]
-                    }
-                  }
+                "errorMessage": {
+                  "type": "string"
                 }
               }
             }
@@ -748,50 +749,8 @@
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        403
-                      ]
-                    },
-                    "info": {
-                      "type": "string",
-                      "enum": [
-                        "Unauthorized"
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "Unauthenticated": {
-        "description": "response sent for failed login attempts and attempts to access resources without valid authentication credentials.",
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        401
-                      ]
-                    },
-                    "info": {
-                      "type": "string",
-                      "enum": [
-                        "Unauthorized",
-                        "Unauthenticated"
-                      ]
-                    }
-                  }
+                "errorMessage": {
+                  "type": "string"
                 }
               }
             }
@@ -805,47 +764,23 @@
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        400
-                      ]
-                    },
-                    "info": {
-                      "type": "string",
-                      "enum": [
-                        "Request body is missing required field(s).",
-                        "Request body fields must all be in string format."
-                      ]
-                    }
-                  }
+                "errorMessage": {
+                  "type": "string"
                 }
               }
             }
           }
         }
       },
-      "InvalidQuery": {
-        "description": "bad request caused by invalid query parameters (e.g. incorrect column names leading to PSQL query errors)",
+      "InternalServerError": {
+        "description": "InternalServerError",
         "content": {
           "application/json": {
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        400
-                      ]
-                    },
-                    "info": {
-                      "type": "string"
-                    }
-                  }
+                "errorMessage": {
+                  "type": "string"
                 }
               }
             }
@@ -859,19 +794,8 @@
             "schema": {
               "type": "object",
               "properties": {
-                "error": {
-                  "properties": {
-                    "status": {
-                      "type": "number",
-                      "enum": [
-                        400
-                      ]
-                    },
-                    "info": {
-                      "type": "string",
-                      "example": "Bad request"
-                    }
-                  }
+                "errorMessage": {
+                  "type": "string"
                 }
               }
             }
