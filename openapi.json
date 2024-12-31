@@ -637,7 +637,7 @@
           "cart": {
             "type": "object",
             "properties": {
-              "id": {
+              "userid": {
                 "type": "integer",
                 "example": 1
               },
