@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 @JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class Product {
 	
-	
+	@NotBlank(message = "Id is mandatory")
     private int id;
     private String name;
     private String description;

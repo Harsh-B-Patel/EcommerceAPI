@@ -25,7 +25,7 @@ public class ProductService {
 		System.out.println("Enter ProductService.GetProductByID");
 
 		// Validate Token
-		//JwtUtil.validateToken(token);
+		JwtUtil.validateToken(token);
 
 		// check id user id exists
 		if (ProductDaoUtil.checkProduct(Id)) {
@@ -59,7 +59,7 @@ public class ProductService {
 		System.out.println("Enter ProductService.UpdateProduct");
 
 		// Validate Token
-		//JwtUtil.validateToken(token);
+		JwtUtil.validateToken(token);
 		
 		// Validate userId == User.getId()
 		if (Id != product.getId()) {
@@ -95,7 +95,7 @@ public class ProductService {
 		System.out.println("Enter ProductService.DeleteProduct");
 
 		// Validate Token
-		//JwtUtil.validateToken(token);
+		JwtUtil.validateToken(token);
 
 		// check if user id exists
 		if (UserDaoUtil.checkUserByID(Id)) {

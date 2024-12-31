@@ -2,30 +2,34 @@ package harsh.projects.ecommerce.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+
+@JsonInclude(Include.NON_NULL) // Ignore null fields 
+@JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class Cart {
-    private CartDetails cart;
-
-    // Getters and Setters
-    public CartDetails getCart() {
-        return cart;
-    }
-
-    public void setCart(CartDetails cart) {
-        this.cart = cart;
-    }
-
-    public static class CartDetails {
-        private Integer id;
+		
+		
+		@NotBlank(message = "UserId is mandatory")
+        private Integer userid;
+		
         private String username;
+        
+        @Valid
+        @NotBlank(message = "CartItems are mandatory")
         private List<CartItem> cartItems;
 
         // Getters and Setters
         public Integer getId() {
-            return id;
+            return userid;
         }
 
         public void setId(Integer id) {
-            this.id = id;
+            this.userid = id;
         }
 
         public String getUsername() {
@@ -45,25 +49,4 @@ public class Cart {
         }
     }
 
-    public static class CartItem {
-        private Product product;
-        private Integer quantity;
-
-        // Getters and Setters
-        public Product getProduct() {
-            return product;
-        }
-
-        public void setProduct(Product product) {
-            this.product = product;
-        }
-
-        public Integer getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(Integer quantity) {
-            this.quantity = quantity;
-        }
-    }
-}
+  
