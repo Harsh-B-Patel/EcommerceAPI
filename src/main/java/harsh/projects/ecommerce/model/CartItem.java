@@ -10,7 +10,7 @@ public class CartItem {
     
 	
 	@NotBlank(message = "Quantity is mandatory")
-	private Integer quantity;
+	private int quantity;
 
     // Getters and Setters
     public Product getProduct() {
@@ -25,7 +25,7 @@ public class CartItem {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }

@@ -1,10 +1,12 @@
 package harsh.projects.ecommerce.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -15,36 +17,27 @@ public class Cart {
 		
 		
 		@NotBlank(message = "UserId is mandatory")
-        private Integer userid;
-		
-        private String username;
+        private int userId;
         
         @Valid
         @NotBlank(message = "CartItems are mandatory")
-        private List<CartItem> cartItems;
+        private List<CartItem> cartItems = new ArrayList<CartItem>();
 
         // Getters and Setters
-        public Integer getId() {
-            return userid;
-        }
 
-        public void setId(Integer id) {
-            this.userid = id;
-        }
+        public int getUserId() {
+			return userId;
+		}
 
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
+		public void setUserId(int userid) {
+			this.userId = userid;
+		}
+		
         public List<CartItem> getCartItems() {
             return cartItems;
         }
 
-        public void setCartItems(List<CartItem> cartItems) {
+		public void setCartItems(List<CartItem> cartItems) {
             this.cartItems = cartItems;
         }
     }
