@@ -2,6 +2,7 @@ package harsh.projects.ecommerce.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -40,6 +41,26 @@ public class Cart {
 		public void setCartItems(List<CartItem> cartItems) {
             this.cartItems = cartItems;
         }
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(cartItems, userId);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Cart other = (Cart) obj;
+			return Objects.equals(cartItems, other.cartItems) && userId == other.userId;
+		}
+
+
+		
     }
 
   

@@ -25,7 +25,7 @@ public class CartService {
 		System.out.println("Enter CartService.GetCartByUserID");
 
 		// Validate Token
-		//JwtUtil.validateToken(token);
+		JwtUtil.validateToken(token);
 
 		// check user id exists
 		if (UserDaoUtil.checkUserByID(Id)) {
@@ -76,7 +76,7 @@ public class CartService {
 		System.out.println("Enter CartService.UpdateCart");
 
 		// Validate Token
-		//JwtUtil.validateToken(token);
+		JwtUtil.validateToken(token);
 		
 		// Validate userId == User.getId()
 		if (Id != cart.getUserId()) {

@@ -1,7 +1,11 @@
 package harsh.projects.ecommerce.model;
 
+import java.util.Objects;
+
 public class User {
-    private int id;
+
+
+	private int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -56,4 +60,23 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    
+    @Override
+	public int hashCode() {
+		return Objects.hash(email, firstName, id, lastName, phone, username);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(phone, other.phone)
+				&& Objects.equals(username, other.username);
+	}
 }

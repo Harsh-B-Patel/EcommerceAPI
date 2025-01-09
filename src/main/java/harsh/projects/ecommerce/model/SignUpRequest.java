@@ -1,5 +1,7 @@
 package harsh.projects.ecommerce.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -40,6 +42,23 @@ public class SignUpRequest {
 	@Override
 	public String toString() {
 		return "SignUpRequest [credentials=" + credentials + ", user=" + user + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(credentials, user);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SignUpRequest other = (SignUpRequest) obj;
+		return Objects.equals(credentials, other.credentials) && Objects.equals(user, other.user);
 	}
     
 }
