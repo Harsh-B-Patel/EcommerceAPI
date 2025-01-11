@@ -29,7 +29,7 @@ public class CartDaoUtil {
 		System.out.println("CartDaoUtil.checkCartExists : check if cart exists");
 
 		boolean cart_Exists = false;
-		String query = "SELECT 1 FROM cartitem WHERE userid='" + id + "';";
+		String query = "SELECT 1 FROM cart WHERE userId='" + id + "';";
 
 		try {
 
@@ -65,7 +65,7 @@ public class CartDaoUtil {
 	 * @return
 	 */
 	public static Cart getCart(int Id) {
-		String query = "SELECT * FROM cartitem WHERE userId='" + Id + "';";
+		String query = "SELECT * FROM cart WHERE userId='" + Id + "';";
 		try {
 
 			// Connect to DB
@@ -169,7 +169,7 @@ public class CartDaoUtil {
 
 			// Prepare the the query
 			PreparedStatement statement = connection
-					.prepareStatement("INSERT INTO cartitem (userId, productId, quantity) VALUES (?,?,?)");
+					.prepareStatement("INSERT INTO cart (userId, productId, quantity) VALUES (?,?,?)");
 			statement.setInt(1, userId);
 			statement.setInt(2, productId);
 			statement.setInt(3, quantity);
@@ -201,7 +201,7 @@ public class CartDaoUtil {
 
 			// Prepare the the query
 			PreparedStatement statement = connection
-					.prepareStatement("UPDATE cartitem SET quantity = ? WHERE userId = ? and productId = ? ");
+					.prepareStatement("UPDATE cart SET quantity = ? WHERE userId = ? and productId = ? ");
 			statement.setInt(1, quantity);
 			statement.setInt(2, userId);
 			statement.setInt(3, productId);
@@ -233,7 +233,7 @@ public class CartDaoUtil {
 
 			// Prepare the the query
 			PreparedStatement statement = connection
-					.prepareStatement("DELETE FROM CartItem WHERE userid = ? and productId = ? ");
+					.prepareStatement("DELETE FROM CartItem WHERE userId = ? and productId = ? ");
 			statement.setInt(1, userId);
 			statement.setInt(2, productId);
 			System.out.println(statement.toString());
@@ -259,7 +259,7 @@ public class CartDaoUtil {
 		System.out.println("CartDaoUtil.itemExists : check if item exists");
 
 		boolean item_Exists = false;
-		//String query = "SELECT 1 FROM cartitem WHERE userId='" + userId + "' and productId ='" + productId + " ';"
+		//String query = "SELECT 1 FROM cart WHERE userId='" + userId + "' and productId ='" + productId + " ';"
 
 		try {
 
@@ -267,7 +267,7 @@ public class CartDaoUtil {
 			Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			// Prepare the the query
 			PreparedStatement statement = connection
-					.prepareStatement("SELECT 1 FROM cartitem WHERE userid = ? and productId = ? ");
+					.prepareStatement("SELECT 1 FROM cart WHERE userId = ? and productId = ? ");
 			statement.setInt(1, userId);
 			statement.setInt(2, productId);
 

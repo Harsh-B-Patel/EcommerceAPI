@@ -117,7 +117,7 @@ public class ProductDaoUtil {
 			
 			// Prepare the the query
 			PreparedStatement statement = connection.prepareStatement(
-					"UPDATE Product SET name = ?, description = ?, price = ?, stock = ?, categoryName = ? WHERE id = ? ");
+					"UPDATE product SET name = ?, description = ?, price = ?, stock = ?, categoryName = ? WHERE id = ? ");
 			statement.setString(1, product.getName());
 			statement.setString(2, product.getDescription());
 			statement.setDouble(3, product.getPrice());

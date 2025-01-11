@@ -11,9 +11,9 @@ import harsh.projects.ecommerce.model.Token;
 import harsh.projects.ecommerce.model.User;
 
 class LoginServiceTest {
-	
+
 	String token = JwtUtil.generateToken(Constants.SUBJECT, "johndoe");
-	// Sample test Data to check against or use. 
+	// Sample test Data to check against or use.
 	int id = 1;
 	String userName = "johndoe";
 	String passWord = "password123";
@@ -24,7 +24,7 @@ class LoginServiceTest {
 
 	@Test
 	void testLoginSuccess() throws UserDoesNotExistsException {
-		// Setup to check against , User 
+		// Setup to check against , User
 		User user = new User();
 		user.setId(id);
 		user.setUsername(userName);
@@ -32,7 +32,7 @@ class LoginServiceTest {
 		user.setLastName(lastName);
 		user.setEmail(email);
 		user.setPhone(phone);
-		
+
 		// LoginService run
 		Login login = new Login();
 		login.setUsername(userName);
@@ -40,14 +40,40 @@ class LoginServiceTest {
 
 		LoginResponse loginResponseActual = LoginService.Login(login);
 		User userResult = loginResponseActual.getUser();
-		
+
 		assertEquals(user, userResult);
 	}
 
+	/*
+	 * Test Exception thrown when invalid credentials are provided
+	 */
 	@Test
-	void testLoginFailure() {
-		//  Test if invalid creentials and what errors thworn for it 
-		fail("Not yet implemented");
+	void testLoginFailureInvalidUsername() {
+		// Test if invalid creentials and throws UserDoesNotExistsExaception for it
+		Login login = new Login();
+		login.setUsername("johndoe1");
+		login.setPassword(passWord);
+
+		assertThrows(UserDoesNotExistsException.class, () -> {
+			LoginService.Login(login);
+		}); // Lamda
+
 	}
-	
+
+	/*
+	 * Test Exception thrown when invalid credentials are provided
+	 */
+	@Test
+	void testLoginFailureInvalidPassword() {
+		// Test if invalid creentials and throws UserDoesNotExistsExaception for it
+		Login login = new Login();
+		login.setUsername("johndoe");
+		login.setPassword("password1234");
+
+		assertThrows(UserDoesNotExistsException.class, () -> {
+			LoginService.Login(login);
+		}); // Lamda
+
+	}
+
 }
