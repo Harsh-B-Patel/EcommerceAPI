@@ -17,42 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @SpringBootApplication
-@RestController
-@RequestMapping("/")
 public class EcommerceApplication {
-
-
-	/**
-	 * Extract JSON from file as string.
-	 * Use JsonNode to convert String to JSON.   
-	 * @return JsonNode Object (json)
-	 */
-	@GetMapping("/")
-	public JsonNode defaultPage() {
-		
-        String filePath = "openapi.json"; // Replace with the path to your Java file
-        String fileContent = "";
-        JsonNode jsonNode = null;
-        
-        try {
-            // Read file content as a string
-        	fileContent = Files.readString(Path.of(filePath));
-        	
-        	// String to JsonNode
-    		ObjectMapper mapper = new ObjectMapper();
-    		jsonNode = mapper.readTree(fileContent);
-           
-            // Print the file content for logging
-            System.out.println(fileContent);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		
-        // Return Json back to consumer
-		return jsonNode;
-		
-	}
 	
 	public static void main(String[] args) throws IOException, SQLException {
 		SpringApplication.run(EcommerceApplication.class, args);
