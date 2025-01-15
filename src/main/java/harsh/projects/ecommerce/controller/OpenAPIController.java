@@ -21,7 +21,7 @@ public class OpenAPIController {
     @GetMapping("/")
     public JsonNode defaultPage() {
 		
-        String filePath = "resources/openapi.json"; // Path File
+        String filePath = "/app/openapi.json"; // Path File
         String fileContent = "";
         JsonNode jsonNode = null;
         
