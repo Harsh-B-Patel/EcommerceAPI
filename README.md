@@ -14,19 +14,6 @@ This project features a **[RESTful CRUD API](https://taliphus.vercel.app/api)** 
 - [Data modelling](./prisma/schema.prisma) and [database migrations](./prisma/migrations/20230728105408_/migration.sql) with Prisma ORM.
 - Programmatic [database reseeding](/prisma/seed.ts) using [dummy data](/prisma/dev_data.ts).
 
-<p float="left">
-  <img src="./images/node.svg" width="60" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/ts.svg" width="60" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/prisma.svg" width="140" />
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/psql.svg" width="60" /> 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/mocha.svg" width="60" /> 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="./images/chai.svg" width="60" />
-</p>
 
 ---
 ## Endpoints
