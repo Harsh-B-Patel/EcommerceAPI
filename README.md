@@ -22,6 +22,8 @@ For more information on available query parameters and request body requirements
 Many of these endpoints require authenticated access, which you can accomplish by first signing up and then logging in.
 
 ```json
+ADD VIDEO DEMO HERE INSTEAD
+
 // 1) Send a POST request to /api/signup
 {
   "username": ...,
@@ -39,27 +41,23 @@ Many of these endpoints require authenticated access, which you can accomplish b
 
 | HTTP method(s) | URL
 |---|---|
-POST | /api/signup
-POST | /api/login
-POST | /api/logout
-GET | /api/products
-GET | /api/products/bestsellers
-GET | /api/products/:id
-GET | /api/products/:id/reviws
-GET, PUT, DELETE | /api/customers/:id
-GET, PUT | /api/customers/:id/cart
-GET, PUT | /api/customers/:id/wishlist
-GET, POST | /api/customers/:id/orders
-GET | /api/customers/:id/favorites
-GET | /api/customers/:id/orders/:orderId
-GET | /api/customers/:id/reviews
-POST | /api/customers/:id/addresses
-DELETE | /api/customers/:id/addresses/:addressId
-GET | /api/categories
-GET | /api/suppliers
-GET, POST | /api/reviews
-GET, PUT, DELETE | /api/reviews/:id
+POST | /signup
+POST | /login
 
+GET | /user/:id
+POST | /user/:id
+DELETE | /user/:id
+
+GET | /product/:id
+POST | /product/:id
+PUT | /product/:id
+DELETE | /product/:id
+
+GET | /user/:id/cart
+PUT | /user/:id/cart
+
+GET | /resetDB
+GET | /setDB
 
 ---
 ## Main project dependencies
@@ -73,12 +71,27 @@ AWS ECS | Cloud Deployment Platform
 
 ---
 ## Running the project on localhost
-> This project requires Java, MySQL to be installed locally. 
+> This project requires Java, Maven, MySQL and Docker to be installed locally. 
+
+### Docker Installation
+1) Install Docker Desktop. 
+2) Run the command below. 
+```
+sudo docker run -d -p 8080:8080 harshbpatel/ecommerce-app
+```
 
 ### Setup instructions
-1) Clone and fork the repository and install all dependencies.
-2) Create a local empty PSQL database called **ecommerce_db**.
-3) Create a **.env** file in the root of the repository with 4 environment variables:
+1) Clone and fork the repository and install all dependencies (Java, Maven, MySQL, Docker).
+2) Create a local instance of MySQL server.
+3) Set the MySQL variable in Constants Class.
+4) Run below Maven Command to create jar for the Spring app.
+```
+mvn clean install
+```
+6) Either Compile and run Java Project from a Java IDE or run below Docker commands to create a docker image.
+```
+docker build -t ecommerce-app:latest .
 
+docker run -p 8081:8080 ecommerce-app:latest
+```
 
-### Run the Express server in development mode.
