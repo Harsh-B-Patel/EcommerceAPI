@@ -43,19 +43,15 @@ ADD VIDEO DEMO HERE INSTEAD
 |---|---|
 POST | /signup
 POST | /login
-
 GET | /user/:id
 POST | /user/:id
 DELETE | /user/:id
-
 GET | /product/:id
 POST | /product/:id
 PUT | /product/:id
 DELETE | /product/:id
-
 GET | /user/:id/cart
 PUT | /user/:id/cart
-
 GET | /resetDB
 GET | /setDB
 
