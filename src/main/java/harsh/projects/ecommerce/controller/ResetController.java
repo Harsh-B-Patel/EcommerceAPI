@@ -131,9 +131,8 @@ public class ResetController {
 	
 	
 	/**
-	 * Extract JSON from file as string.
-	 * Use JsonNode to convert String to JSON.   
-	 * @return JsonNode Object (json)
+	 * Execute SQL Query to DB to Reset DB with Dummy Data  
+	 * @return String
 	 */
     @GetMapping("/resetDB")
     public String ResetDB() {
@@ -167,9 +166,8 @@ public class ResetController {
 
     
 	/**
-	 * Extract JSON from file as string.
-	 * Use JsonNode to convert String to JSON.   
-	 * @return JsonNode Object (json)
+	 * Execute SQL Query to DB to Initially Set DB with Dummy Data   
+	 * @return String
 	 */
     @GetMapping("/setDB")
     public String SetDB() {
