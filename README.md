@@ -57,14 +57,14 @@ AWS ECS | Cloud Deployment Platform
 ## Running the project on localhost
 > This project requires Java, Maven, MySQL and Docker to be installed locally. 
 
-### Docker Installation
+### Docker Instructions
 1) Install Docker Desktop. 
 2) Run the command below. 
 ```
 sudo docker run -d -p 8080:8080 harshbpatel/ecommerce-app
 ```
 
-### Setup instructions
+### Setup Instructions
 1) Clone and fork the repository and install all dependencies (Java, Maven, MySQL, Docker).
 2) Create a local instance of MySQL server.
 3) Set the MySQL variable in Constants Class.
