@@ -1,9 +1,12 @@
 # Ecommerce APIs
 
-
-Spring, Java , SQL, OpenAPI and AWS project
-
 This project features a RESTful CRUD API that processes data for an ecommerce application.
+
+Stack: Spring, Java, SQL, OpenAPI, Docker and AWS.
+
+Currently this project is hosted on AWS Elastic Container Service (ECS). **[API base url](http://98.81.75.203:8081/)**.
+
+You can also find the container image on Docker Hub. **[DockerHub Image url](https://hub.docker.com/r/harshbpatel/ecommerce-app)**.
 
 ## Key product features
 - Designed and fully documented using Swagger tools and OpenAPI Specification. 
