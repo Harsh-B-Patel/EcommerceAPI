@@ -3,40 +3,25 @@
 
 Spring, Java , SQL, OpenAPI and AWS project
 
-This project features a **[RESTful CRUD API](https://taliphus.vercel.app/api)** that processes data for an ecommerce application.
+This project features a RESTful CRUD API that processes data for an ecommerce application.
 
 ## Key product features
 - Designed and fully documented using Swagger tools and OpenAPI Specification. 
-  - Full **[API contract](./openapi.yaml)** can be found [here](./openapi.yaml).
-- [JWT based autorization and Persistence](./auth/) enabling persistent session based logins.
-- [Middleware functions](./middleware) for data validation and user authentication.
+  - Full **[API contract](./resources/openapi.json)** can be found [here](./resources/openapi.json).
+- [JWT based autorization and Persistence](./src/main/java/harsh/projects/ecommerce/service/JwtUtil.java) enabling persistent session based logins.
+- [Middleware functions](./src/main/java/harsh/projects/ecommerce/service/) for data validation and user authentication.
   - In-depth error handling, casting a wide net over potential edge cases and sources of error.
-- [Data modelling](./prisma/schema.prisma) and [database migrations](./prisma/migrations/20230728105408_/migration.sql) with Prisma ORM.
-- Programmatic [database reseeding](/prisma/seed.ts) using [dummy data](/prisma/dev_data.ts).
+- Programmatic [database reseeding](./src/main/java/harsh/projects/ecommerce/controller/ResetController.java) using [dummy data](./resources/CreateSampelTables.sql) in MySQL.
 
 
 ---
 ## Endpoints
-For more information on available query parameters and request body requirements, visit the **[API base url](https://taliphus.vercel.app/api)**.
+For more information on available query parameters and request body requirements, visit the **[API base url](http://98.81.75.203:8081/)**.
 
 Many of these endpoints require authenticated access, which you can accomplish by first signing up and then logging in.
 
 ```json
-ADD VIDEO DEMO HERE INSTEAD
-
-// 1) Send a POST request to /api/signup
-{
-  "username": ...,
-  "password": ...,
-  "email": ... ,
-  "name": ...
-}
-
-// 2) Send a POST request to /api/login
-{
-  "username": ... /* your username from step 1) */,
-  "password": ... /* your password from step 1) */
-}
+ADD VIDEO DEMO HERE
 ```
 
 | HTTP method(s) | URL
