@@ -1,12 +1,11 @@
 # Ecommerce APIs
 
-This project features a RESTful CRUD API that processes data for an ecommerce application.
+A RESTful CRUD API for managing data in an ecommerce application.
 
-Stack: Spring, Java, SQL, OpenAPI, Docker and AWS.
+**Stack:** Spring, Java, SQL, OpenAPI, Docker, AWS.  
+**Hosted on AWS Elastic Container Service (ECS):** [API Base URL](http://98.81.75.203:8081/)  
+**Docker Image:** [DockerHub Image](https://hub.docker.com/r/harshbpatel/ecommerce-app)
 
-Currently this project is hosted on AWS Elastic Container Service (ECS). **[API base url](http://98.81.75.203:8081/)**.
-
-You can also find the container image on Docker Hub. **[DockerHub Image url](https://hub.docker.com/r/harshbpatel/ecommerce-app)**.
 
 ## Key product features
 - Designed and fully documented using Swagger tools and OpenAPI Specification. 
@@ -18,6 +17,24 @@ You can also find the container image on Docker Hub. **[DockerHub Image url](htt
 
 
 ---
+
+## Key Features
+
+- **Comprehensive API Documentation**  
+  Designed and documented with Swagger tools and OpenAPI Specification.  
+  [API Contract](./resources/openapi.json)
+
+- **JWT-Based Authorization and Persistence**  
+  Persistent session-based logins using [JWT Token](./src/main/java/harsh/projects/ecommerce/service/JwtUtil.java).
+
+- **Middleware for Validation and Authentication**  
+  [Middleware functions](./src/main/java/harsh/projects/ecommerce/service/) handle data validation, user authentication, and robust error handling to address edge cases.
+
+- **Database Reseeding**  
+  Programmatic [database reseeding](./src/main/java/harsh/projects/ecommerce/controller/ResetController.java) using [dummy data](./resources/CreateSampelTables.sql) in MySQL.
+
+---
+
 ## Endpoints
 For more information on available query parameters and request body requirements, visit the **[API base url](http://98.81.75.203:8081/)**.
 
@@ -27,35 +44,38 @@ Many of these endpoints require authenticated access, which you can accomplish b
 ADD VIDEO DEMO HERE
 ```
 
-| HTTP method(s) | URL
-|---|---|
-POST | /signup
-POST | /login
-GET | /user/:id
-POST | /user/:id
-DELETE | /user/:id
-GET | /product/:id
-POST | /product/:id
-PUT | /product/:id
-DELETE | /product/:id
-GET | /user/:id/cart
-PUT | /user/:id/cart
-GET | /resetDB
-GET | /setDB
+| HTTP Method | Endpoint                | Description                  |
+|-------------|-------------------------|------------------------------|
+| POST        | `/signup`               | User signup                  |
+| POST        | `/login`                | User login                   |
+| GET         | `/user/:id`             | Retrieve user by ID          |
+| POST        | `/user/:id`             | Update user details          |
+| DELETE      | `/user/:id`             | Delete user by ID            |
+| GET         | `/product/:id`          | Retrieve product by ID       |
+| POST        | `/product/:id`          | Add a new product            |
+| PUT         | `/product/:id`          | Update product details       |
+| DELETE      | `/product/:id`          | Delete product by ID         |
+| GET         | `/user/:id/cart`        | Retrieve user cart           |
+| PUT         | `/user/:id/cart`        | Update user cart             |
+| GET         | `/resetDB`              | Reset database               |
+| GET         | `/setDB`                | Set database with dummy data |
 
 ---
-## Main project dependencies
-| Package | Purpose
-|---|---|
-Spring | Backend API framework
-AWS RDS(MySQL) | Database 
-JUnit | Unit testing
-Docker | Containerization
-AWS ECS | Cloud Deployment Platform 
+## Dependencies
+
+| Dependency      | Purpose                       |
+|------------------|-------------------------------|
+| **Spring**       | Backend API framework         |
+| **AWS RDS (MySQL)** | Database                    |
+| **JUnit**        | Unit testing framework        |
+| **Docker**       | Containerization             |
+| **AWS ECS**      | Cloud deployment platform    |
 
 ---
 ## Running the project on localhost
-> This project requires Java, Maven, MySQL and Docker to be installed locally. 
+> **Prerequisites:**  
+> Install Java, Maven, MySQL, and Docker on your local machine.
+
 
 ### Docker Instructions
 1) Install Docker Desktop. 
