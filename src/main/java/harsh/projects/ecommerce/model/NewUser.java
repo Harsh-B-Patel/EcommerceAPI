@@ -1,5 +1,7 @@
 package harsh.projects.ecommerce.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -58,6 +60,24 @@ public class NewUser{
 	public String toString() {
 		return "NewUser [firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", phone=" + phone + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(email, firstName, lastName, phone);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NewUser other = (NewUser) obj;
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(phone, other.phone);
 	}
     
     

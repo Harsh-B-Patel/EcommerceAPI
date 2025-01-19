@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "6663b074-ab5c-4511-adc0-f9000b02b912",
+		"name": "Ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39789908"
+	},
+	"item": [
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"alexnes1\",\r\n    \"password\": \"passwor1d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/login"
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"credentials\": {\r\n    \"username\": \"aldSaraddhNes1\",\r\n    \"password\": \"paeeesswjjor1d\"\r\n  },\r\n  \"user\": {\r\n    \"firstName\": \"SaraddhNew\",\r\n    \"lastName\": \"ddd\",\r\n    \"email\": \"saraddhlddwwdwdwdwdee@example.com\",\r\n    \"phone\": \"4447888866\"\r\n  }\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "GET user/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/2"
+			},
+			"response": []
+		},
+		{
+			"name": "POST user/{id}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"username\": \"sarddahleeNew\",\r\n    \"firstName\": \"SaraddhNew\",\r\n    \"lastName\": \"ddd\",\r\n    \"email\": \"saraddhlddwwdwdwdwdee@example.com\",\r\n    \"phone\": \"4447888866\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/8"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user/{id}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/2"
+			},
+			"response": []
+		},
+		{
+			"name": "GET product/{id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/product/3"
+			},
+			"response": []
+		},
+		{
+			"name": "POST product/{id}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 30,\r\n    \"name\": \"Bluetooth Speaker\",\r\n    \"description\": \"Portable speaker with excellent sound quality.\",\r\n    \"price\": 45.0,\r\n    \"stock\": 30,\r\n    \"categoryName\": \"Audio\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/product/30"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE  product/{id}",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/product/2"
+			},
+			"response": []
+		},
+		{
+			"name": "GET user/{id}/cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/3/cart"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT user/{id}/cart",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "ggg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 3,\r\n    \"cartItems\": [\r\n        {\r\n            \"product\": {\r\n                \"id\": 4,\r\n                \"name\": \"Bluetooth Speaker\",\r\n                \"description\": \"Portable speaker with excellent sound quality.\",\r\n                \"price\": 45.0,\r\n                \"stock\": 30,\r\n                \"categoryName\": \"Audio\"\r\n            },\r\n            \"quantity\": 11\r\n        },\r\n        {\r\n            \"product\": {\r\n                \"id\": 5,\r\n                \"name\": \"Rechargeable Batteries\",\r\n                \"description\": \"AA rechargeable batteries, pack of 4.\",\r\n                \"price\": 20.33,\r\n                \"stock\": 150,\r\n                \"categoryName\": \"Electronics\"\r\n            },\r\n            \"quantity\": 0\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/3/cart"
+			},
+			"response": []
+		}
+	]
+}

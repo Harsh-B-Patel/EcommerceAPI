@@ -1,8 +1,4 @@
-package harsh.projects.ecommerce.advice;
-import harsh.projects.ecommerce.exception.TokenInValidException;
-import harsh.projects.ecommerce.exception.UserAlreadyExistsException;
-import harsh.projects.ecommerce.exception.UserDoesNotExistsException;
-
+package harsh.projects.ecommerce.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

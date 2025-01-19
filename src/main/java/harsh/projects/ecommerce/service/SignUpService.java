@@ -15,11 +15,11 @@ public class SignUpService {
 	public static LoginResponse signUp(SignUpRequest signUpInfo) throws UserAlreadyExistsException {
 
 		// check if username exists
-		System.out.println("LoginService.signUpMethod : Checking if Username Exists");
+		System.out.println("SignUpService.signUpMethod : Checking if Username Exists");
 		boolean user_exists = UserDaoUtil.checkUserByUsername(signUpInfo.getCredentials().getUsername());
 
 		if (!user_exists) {
-			System.out.println("LoginService.signUpMethod :  Username does not Exists");
+			System.out.println("SignUpService.signUpMethod :  Username does not Exists");
 			// go to db and add the user
 			User returnUserInfo = UserDaoUtil.setUserDetails(signUpInfo.getCredentials(), signUpInfo.getUser());
 
@@ -31,7 +31,7 @@ public class SignUpService {
 			return signUpResponse;
 
 		} else {
-			System.out.println("LoginService.signUpMethod :  Username Exists");
+			System.out.println("SignUpService.signUpMethod :  Username Exists");
 			throw new UserAlreadyExistsException(
 					"User: " + signUpInfo.getCredentials().getUsername() + " already exists");
 		}

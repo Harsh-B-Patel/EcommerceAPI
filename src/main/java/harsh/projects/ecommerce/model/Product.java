@@ -1,5 +1,7 @@
 package harsh.projects.ecommerce.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -10,7 +12,7 @@ import jakarta.validation.constraints.NotBlank;
 @JsonIgnoreProperties(ignoreUnknown = true) //ignore unknown fields 
 public class Product {
 	
-	
+	@NotBlank(message = "Id is mandatory")
     private int id;
     private String name;
     private String description;
@@ -66,5 +68,26 @@ public class Product {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(categoryName, description, id, name, price, stock);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		return Objects.equals(categoryName, other.categoryName) && Objects.equals(description, other.description)
+				&& id == other.id && Objects.equals(name, other.name) && Objects.equals(price, other.price)
+				&& stock == other.stock;
+	}
+    
+    
 }
 

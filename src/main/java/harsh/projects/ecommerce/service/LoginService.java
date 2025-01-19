@@ -21,14 +21,20 @@ public class LoginService {
 
 		if (user_exists) {
 
-			// get user info from DB
-			User user = UserDaoUtil.getUserDetails(loginInfo.getUsername());
+			// check if credentials are correct
+			boolean validCredentials = UserDaoUtil.verifyLoginCredentials(loginInfo);
+			if (validCredentials) {
+				// get user info from DB
+				User user = UserDaoUtil.getUserDetails(loginInfo.getUsername());
 
-			// get new token
-			Token token = new Token();
-			token.setToken(JwtUtil.generateToken(Constants.SUBJECT, user.getUsername()));
+				// get new token
+				Token token = new Token();
+				token.setToken(JwtUtil.generateToken(Constants.SUBJECT, user.getUsername()));
 
-			return new LoginResponse(token, user);
+				return new LoginResponse(token, user);
+			} else {
+				throw new UserDoesNotExistsException("User: " + loginInfo.getUsername() + " does not exists");
+			}
 
 		} else {
 			// user does not exists return custom error
