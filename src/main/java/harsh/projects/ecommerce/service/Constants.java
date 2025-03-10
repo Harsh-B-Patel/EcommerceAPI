@@ -13,5 +13,8 @@ public class Constants {
     public static String DB_USER = "root"; 
     public static String DB_PASSWORD = "RWNvbW1lckFQSUVjb21tZXJBUElFY29tbWVyQVBJ";
     public static String SUBJECT = "EcommerceAPIUser";
+    public static String OPENAPI_FILE = "resources/openapi.json";
+    //public static String OPENAPI_FILE = "/app/openapi.json"; // Docker Container
+
     
 }
