@@ -1,0 +1,20 @@
+mvn clean install -DskipTests
+
+docker build -t ecommerce-app:latest .
+
+docker run -p 8081:8080 ecommerce-app:latest
+
+docker image ls
+
+docker tag IMAGEID harshbpatel/ecommerce-app:latest
+
+docker push harshbpatel/ecommerce-app:latest
+
+
+AWS
+sudo docker run -d -p 8081:8080 harshbpatel/ecommerce-app
+
+sudo docker stop CONTAINER_NAME
+
+sudo docker system prune -a --volumes
+    Remove all unused containers, volumes, networks and images
