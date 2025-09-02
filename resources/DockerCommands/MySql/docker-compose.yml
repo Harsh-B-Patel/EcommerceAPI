@@ -1,10 +1,19 @@
-# Use root/example as user/password credentials
-version: '3.1'
+version: "3.8"
 
 services:
-
-  db:
-    image: mysql
-    restart: always
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: RWNvbW1lckFQSUVjb21tZXJBUElFY29tbWVyQVBJ
+      MYSQL_ROOT_PASSWORD: RWNvbW1lckFQSUVjb21tZXJBUElFY29tbWVyQVBJ   # change this!
+      MYSQL_DATABASE: devdb               # default database
+    ports:
+      - "3306:3306"   # host_port:container_port
+    volumes:
+      - ./mysql-data:/var/lib/mysql   # persist data locally
+      - ./init-scripts:/docker-entrypoint-initdb.d # optional: put .sql files here for init
+
+volumes:
+  mysql-data:
+
